@@ -1,0 +1,20 @@
+return {
+    -- networks this module will connect to. When booting the module will scan
+    -- all essids and connect to the first one found that is listed here.
+    SSID = {
+        YOUR_ESSID = "the WPA2 passphrase",
+        ANOTER_ESSID = "other passphrase"
+    },
+
+    -- the pin the ws2812 are connected to (GPIO2)
+    LED_PIN = 4,
+
+    -- the number of LEDs
+    NUM_LEDS = 27,
+
+    -- the openpixelcontrol-port
+    OPC_PORT = 7890,
+
+    -- the openpixelcontrol-channel this device is listening on
+    OPC_CHANNEL = 12
+};

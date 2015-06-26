@@ -1,0 +1,6 @@
+[submodule "tools/nodemcu-uploader"]
+	path = tools/nodemcu-uploader
+	url = git@github.com:usefulthink/nodemcu-uploader.git
+[submodule "tools/esptool"]
+	path = tools/esptool
+	url = git@github.com:themadinventor/esptool.git
