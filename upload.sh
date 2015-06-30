@@ -1,14 +1,18 @@
 #!/bin/bash
 
+# change this to match your usbserial-device
 PORT="/dev/cu.usbserial-DN009N24"
 
-DEVMODE=no
 BASEDIR="$(dirname `readlink -f $0`)"
 UPLOADER="${BASEDIR}/tools/nodemcu-uploader/nodemcu-uploader.py"
 
+DEVMODE=no
+COMPILE=yes
+
 while [ $# -gt 0 ] ; do
   case $1 in
-    --dev) DEVMODE=yes ; shift ;;
+    --dev|d) DEVMODE=yes ; shift ;;
+    --no-compile|-C) COMPILE=no ; shift ;;
     --) shift ; files="$files $@" ; break ;;
     -*) echo "invalid argument: $1" ; shift ;;
     *) files="$files $1" ; shift ;;
@@ -36,4 +40,8 @@ if [ ${DEVMODE} == yes ] ; then
   ${UPLOADER} --port ${PORT} exec <(echo "$cmd")
 fi
 
-${UPLOADER} --port ${PORT} upload --compile --restart ${uploadList}
+if [ $COMPILE == yes ] ; then
+    ${UPLOADER} --port ${PORT} upload --compile --restart ${uploadList}
+else
+    ${UPLOADER} --port ${PORT} upload --restart ${uploadList}
+fi

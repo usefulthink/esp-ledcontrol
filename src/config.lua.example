@@ -12,6 +12,12 @@ return {
     -- the number of LEDs
     NUM_LEDS = 27,
 
+    -- server-mode ('HTTP' (default) or 'OPC')
+    SERVER_MODE = 'HTTP',
+
+    -- http port
+    HTTP_PORT = 80,
+
     -- the openpixelcontrol-port
     OPC_PORT = 7890,
 

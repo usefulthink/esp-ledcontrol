@@ -1,11 +1,15 @@
 local application = {};
 
 function application.start()
-    print("starting opc-server");
     collectgarbage();
 
-    local opcServer = require("opc-server");
-    opcServer.init(config);
+    if SERVER_MODE == 'OPC' then
+        local opcServer = require("opc-server");
+        opcServer.init(config);
+    else
+        local restServer = require("rest-server");
+        restServer.init(config);
+    end
 end
 
 return application
